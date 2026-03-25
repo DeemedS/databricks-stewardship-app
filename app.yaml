@@ -5,7 +5,3 @@ command:
   - "uvicorn"
   - "main:app"
   - "--reload"
-
-env:
-  PYTHONUNBUFFERED: "1"
-  FLASK_ENV: "development"
