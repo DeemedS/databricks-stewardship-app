@@ -1,6 +1,1 @@
-# app.yaml
-name: hello-databricks-app
-runtime: python
-command: "uvicorn app:app --host 0.0.0.0 --port 8000"
-env:
-  PYTHONUNBUFFERED: "1"
+command: "uvicorn app:app"
