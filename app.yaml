@@ -1,5 +1,5 @@
 # app.yaml
-name: databricks-full-stack-app
+name: databricks-stewardship-app
 runtime: python
 command:
   - "uvicorn"
