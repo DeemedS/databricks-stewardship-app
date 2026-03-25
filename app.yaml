@@ -1,1 +1,19 @@
-command: "uvicorn app:app"
+name: databricks-stewardship-app
+runtime: python
+
+# Main command: runs FastAPI (can mount Flask inside if needed)
+# Databricks will handle host and port automatically
+command:
+  - "uvicorn"
+  - "main:app"   # FastAPI + Flask + Dash integration entrypoint
+  - "--reload"   # optional for dev, remove in production
+
+# Environment variables
+env:
+  PYTHONUNBUFFERED: "1"
+  FLASK_ENV: "development"
+  #LANGCHAIN_API_KEY: ""
+
+# Optional: Databricks can install extra packages
+# Make sure requirements.txt exists
+# requirements.txt should include all dependencies listed below
