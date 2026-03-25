@@ -1,17 +1,16 @@
 from fastapi import FastAPI
 from fastapi.middleware.wsgi import WSGIMiddleware
-from flask import Flask, render_template
+from flask import Flask
 
-fastapi_app = FastAPI()
+# Flask app
 flask_app = Flask(__name__)
 
 @flask_app.route("/")
 def home():
-    return render_template("index.html")
+    return "<h1>Hello World from Databricks Apps</h1>"
 
-@fastapi_app.get("/api/health")
-def health():
-    return {"status": "ok"}
+# FastAPI app
+fastapi_app = FastAPI()
 
 # Mount Flask inside FastAPI
 fastapi_app.mount("/", WSGIMiddleware(flask_app))
