@@ -1,0 +1,22 @@
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Action</th>
+  </tr>
+
+  {% for row in data %}
+  <tr>
+    <td>{{ row[0] }}</td>
+    <td>{{ row[1] }}</td>
+    <td>
+      <button 
+        hx-post="/api/delete/{{ row[0] }}"
+        hx-target="#table"
+        hx-swap="outerHTML">
+        Delete
+      </button>
+    </td>
+  </tr>
+  {% endfor %}
+</table>
