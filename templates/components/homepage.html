@@ -1,0 +1,52 @@
+{% block content %}
+<div class="container">
+    <h1 class="mb-4 text-center">Databricks Stewardship App</h1>
+
+    <!-- Health Check -->
+    <div class="mb-4">
+        <button class="btn btn-success" hx-get="/api/health" hx-target="#health-result">
+            Check API Health
+        </button>
+        <span id="health-result" class="ms-3"></span>
+    </div>
+
+    <!-- Cards for each module -->
+    <div class="row">
+
+        <!-- Flask / HTMX -->
+        <div class="col-md-4">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h5 class="card-title">Data Stewardship</h5>
+                    <p class="card-text">Manage and govern your data assets.</p>
+                    <a href="/" class="btn btn-primary">Open</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dash -->
+        <div class="col-md-4">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h5 class="card-title">Dashboards</h5>
+                    <p class="card-text">Interactive Plotly dashboards.</p>
+                    <a href="/dash/" class="btn btn-primary">Open Dashboards</a>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- LangChain / LangGraph -->
+        <div class="col-md-4">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h5 class="card-title">LangChain / LangGraph</h5>
+                    <p class="card-text">LLM workflow and AI agents.</p>
+                    <a href="/langchain/" class="btn btn-primary">Open LangChain</a>
+                </div>
+            </div>
+        </div>
+
+    </div> <!-- end row -->
+</div> <!-- end container -->
+{% endblock %}
