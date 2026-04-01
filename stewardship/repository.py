@@ -3,7 +3,7 @@ import os
 from core.database import get_connection
 from stewardship.model_registry import MODEL_DEFS
 
-DB_SCHEMA = os.getenv("DB_SCHEMA", "wanderbricks")
+DB_SCHEMA = os.getenv("DATABRICKS_SCHEMA", "wanderbricks")
 
 
 def _safe_table_name(model_name):
