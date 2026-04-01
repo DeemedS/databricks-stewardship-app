@@ -6,24 +6,12 @@ command:
   - "main:app"
   - "--reload"
 
-resources:
-  - name: sql_warehouse
-    sql_warehouse:
-      id: <your-sql-warehouse-id>
-
 env:
   - name: DATABRICKS_SCHEMA
     value: wanderbricks
 
-  - name: DATABRICKS_WAREHOUSE_ID
-    valueFrom: sql_warehouse
   - name: DATABRICKS_HOST
-    valueFrom: sql_warehouse
-  - name: DATABRICKS_TOKEN
-    valueFrom: sql_warehouse
-  - name: DATABRICKS_CLUSTER_ID
-    valueFrom: sql_warehouse
-  - name: DATABRICKS_CATALOG
-    valueFrom: sql_warehouse
-  - name: DATABRICKS_SCHEMA
-    valueFrom: sql_warehouse
+    value: dbc-590f1264-5ff1.cloud.databricks.com
+
+  - name: DATABRICKS_HTTP_PATH
+    value: /sql/1.0/warehouses/88aed6e37190d6d8
