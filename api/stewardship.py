@@ -19,25 +19,54 @@ def _extract_values(form_data, columns):
     return values
 
 
-@router.get("/table", response_class=HTMLResponse)
-def table_partial(request: Request, model: str, page: int = 1, page_size: int = 20, message: str = "", level: str = "info"):
-    data = get_rows(model_name=model, page=page, page_size=page_size)
+def _render_table(request: Request, model: str, page: int, page_size: int, rows, total: int, total_pages: int, key_column: str, message: str, level: str):
     return templates.TemplateResponse(
         "components/stewardship_table.html",
         {
             "request": request,
             "model": model,
             "columns": MODEL_DEFS[model],
-            "rows": data["rows"],
-            "key_column": data["key_column"],
+            "rows": rows,
+            "key_column": key_column,
             "page": page,
             "page_size": page_size,
-            "total": data["total"],
-            "total_pages": data["total_pages"],
+            "total": total,
+            "total_pages": total_pages,
             "message": message,
             "level": level,
         },
     )
+
+
+@router.get("/table", response_class=HTMLResponse)
+def table_partial(request: Request, model: str, page: int = 1, page_size: int = 20, message: str = "", level: str = "info"):
+    try:
+        data = get_rows(model_name=model, page=page, page_size=page_size)
+        return _render_table(
+            request=request,
+            model=model,
+            page=page,
+            page_size=page_size,
+            rows=data["rows"],
+            total=data["total"],
+            total_pages=data["total_pages"],
+            key_column=data["key_column"],
+            message=message,
+            level=level,
+        )
+    except Exception as exc:
+        return _render_table(
+            request=request,
+            model=model,
+            page=1,
+            page_size=page_size,
+            rows=[],
+            total=0,
+            total_pages=1,
+            key_column=MODEL_DEFS[model][0],
+            message=str(exc),
+            level="error",
+        )
 
 
 @router.post("/create", response_class=HTMLResponse)

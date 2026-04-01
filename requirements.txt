@@ -17,3 +17,4 @@ langchain
 langgraph
 
 databricks-sql-connector
+databricks-sdk

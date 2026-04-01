@@ -5,3 +5,25 @@ command:
   - "uvicorn"
   - "main:app"
   - "--reload"
+
+resources:
+  - name: sql_warehouse
+    sql_warehouse:
+      id: <your-sql-warehouse-id>
+
+env:
+  - name: DATABRICKS_SCHEMA
+    value: wanderbricks
+
+  - name: DATABRICKS_WAREHOUSE_ID
+    valueFrom: sql_warehouse
+  - name: DATABRICKS_HOST
+    valueFrom: sql_warehouse
+  - name: DATABRICKS_TOKEN
+    valueFrom: sql_warehouse
+  - name: DATABRICKS_CLUSTER_ID
+    valueFrom: sql_warehouse
+  - name: DATABRICKS_CATALOG
+    valueFrom: sql_warehouse
+  - name: DATABRICKS_SCHEMA
+    valueFrom: sql_warehouse
