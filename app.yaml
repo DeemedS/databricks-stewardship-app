@@ -8,13 +8,13 @@ command:
 
 env:
   - name: DATABRICKS_SCHEMA
-    value: wanderbricks
+    value: default
 
   - name: DATABRICKS_HOST
-    value: dbc-590f1264-5ff1.cloud.databricks.com
+    value: https://adb-1234567890123456.7.azuredatabricks.net
 
   - name: DATABRICKS_HTTP_PATH
-    value: /sql/1.0/warehouses/88aed6e37190d6d8
+    value: sql/protocolv1/o/1234567890123456/0123-123456-abcdefg
 
   - name: DATABRICKS_CATALOG
-    value: workspace
+    value: hive_metastore
