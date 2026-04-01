@@ -2,7 +2,8 @@
 from fastapi import FastAPI
 from fastapi.middleware.wsgi import WSGIMiddleware
 from flask import Flask, render_template
-from stewardship import stewardship_api_router, stewardship_blueprint
+from api import stewardship_api_router
+from stewardship import stewardship_blueprint
 
 # --- Flask App ---
 flask_app = Flask(__name__)

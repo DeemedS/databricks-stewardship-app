@@ -6,6 +6,7 @@ werkzeug
 pydantic
 starlette
 httpx
+python-multipart
 
 streamlit
 dash
