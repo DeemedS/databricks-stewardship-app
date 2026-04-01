@@ -3,12 +3,15 @@ import os
 from core.database import get_connection
 from stewardship.model_registry import MODEL_DEFS
 
+DB_CATALOG = os.getenv("DATABRICKS_CATALOG")
 DB_SCHEMA = os.getenv("DATABRICKS_SCHEMA", "wanderbricks")
 
 
 def _safe_table_name(model_name):
     if model_name not in MODEL_DEFS:
         raise ValueError("Unknown model selected.")
+    if DB_CATALOG:
+        return f"{DB_CATALOG}.{DB_SCHEMA}.{model_name}"
     return f"{DB_SCHEMA}.{model_name}"
 
 

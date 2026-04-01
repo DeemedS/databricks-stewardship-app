@@ -15,3 +15,6 @@ env:
 
   - name: DATABRICKS_HTTP_PATH
     value: /sql/1.0/warehouses/88aed6e37190d6d8
+
+  - name: DATABRICKS_CATALOG
+    value: workspace
